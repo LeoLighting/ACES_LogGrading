@@ -1,5 +1,5 @@
 Group {
- name ACES_LogGrading
+ name ALG_AcesLogGrading
  tile_color 0x9e8eff
  label "\[value label_ALG]"
  note_font_color 0xffffffff
