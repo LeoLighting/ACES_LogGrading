@@ -1,13 +1,16 @@
+set cut_paste_input [stack 0]
+version 16.0 v6
+push $cut_paste_input
 Group {
- name ALG_AcesLogGrading
+ name ACES_LogGrading
  tile_color 0x9e8eff
  label "\[value label_ALG]"
  note_font_color 0xffffffff
  selected true
- xpos 163
- ypos -376
+ xpos -1028
+ ypos -614
  addUserKnob {20 User}
- addUserKnob {26 Title l "" +STARTLINE T "<font color=\"white\" face=\"Constantiai\" size=\"7\">ACES Log Grading v1.5                                      </font>\n"}
+ addUserKnob {26 Title l "" +STARTLINE T "<font color=\"white\" face=\"Constantiai\" size=\"7\">ACES Log Grading v1.6                                      </font>\n"}
  addUserKnob {1 label_ALG l Label}
  addUserKnob {26 ""}
  addUserKnob {41 channels_1 l channels T ColorCorrect1.channels}
@@ -38,8 +41,8 @@ Group {
   xpos -473
   ypos 108
   appearance Border
-  bdwidth 464
-  bdheight 731
+  bdwidth 478
+  bdheight 413
  }
  BackdropNode {
   inputs 0
@@ -47,7 +50,7 @@ Group {
   tile_color 0xffffffff
   note_font_size 42
   xpos -423
-  ypos 885
+  ypos 566
   appearance Border
   bdwidth 126
   bdheight 228
@@ -65,7 +68,7 @@ Group {
   xpos -225
   ypos 76
  }
-set N1d2400 [stack 0]
+set Nf106c400 [stack 0]
  Remove {
   operation keep
   channels alpha
@@ -81,7 +84,7 @@ set N1d2400 [stack 0]
  Dot {
   name Dot6
   xpos -506
-  ypos 978
+  ypos 659
  }
  Input {
   inputs 0
@@ -93,16 +96,16 @@ set N1d2400 [stack 0]
  Dot {
   name Dot11
   xpos -71
-  ypos 237
+  ypos 274
  }
-set N1d3000 [stack 0]
+set N6af3e800 [stack 0]
  Dot {
   name Dot13
   xpos -71
-  ypos 672
+  ypos 339
  }
-push $N1d3000
-push $N1d2400
+push $N6af3e800
+push $Nf106c400
  OCIOColorSpace {
   in_colorspace scene_linear
   out_colorspace "ACES - ACEScc"
@@ -112,81 +115,18 @@ push $N1d2400
   ypos 184
  }
  ColorCorrect {
-  name ColorCorrect1
-  selected true
-  xpos -263
-  ypos 245
- }
- Dot {
-  name Dot10
-  xpos -225
-  ypos 353
- }
-set N1d3800 [stack 0]
- Dot {
-  name Dot3
-  xpos -300
-  ypos 352
- }
-set N1d3c00 [stack 0]
- Dot {
-  name Dot2
-  xpos -403
-  ypos 352
- }
- Saturation {
   inputs 1+1
-  channels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
   invert_mask {{parent.boolean_2}}
-  name Saturation2
-  label "R sat"
-  xpos -437
-  ypos 424
- }
- Dot {
-  name Dot1
-  xpos -403
-  ypos 473
- }
-push $N1d3c00
- Shuffle2 {
-  inputs 2
-  fromInput1 {
-   {0}
-   B
-   A
-  }
-  fromInput2 {
-   {1}
-   B
-   A
-  }
-  in2 rgb
-  mappings "4 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 0 3 rgba.alpha 0 3 rgba.red 1 0 rgba.red 0 0"
-  name Shuffle2
-  label R
-  xpos -334
-  ypos 464
- }
- Dot {
-  name Dot12
-  xpos -300
-  ypos 583
- }
-push $N1d3800
- Switch {
-  inputs 2
-  which {{parent.boolean}}
-  name Switch2
+  name ColorCorrect1
   xpos -259
-  ypos 580
+  ypos 270
  }
  Grade {
   inputs 1+1
   invert_mask {{parent.boolean_2}}
   name Grade1
   xpos -259
-  ypos 669
+  ypos 336
  }
  OCIOColorSpace {
   in_colorspace "ACES - ACEScc"
@@ -194,18 +134,18 @@ push $N1d3800
   name OCIOColorSpace2
   label CC-->CG
   xpos -259
-  ypos 786
+  ypos 453
  }
  Dot {
   name Dot7
   xpos -225
-  ypos 904
+  ypos 585
  }
-set N44714c00 [stack 0]
+set N6af3e400 [stack 0]
  Dot {
   name Dot8
   xpos -362
-  ypos 904
+  ypos 585
  }
  Shuffle2 {
   inputs 2
@@ -224,30 +164,30 @@ set N44714c00 [stack 0]
   name Shuffle1
   label "ALPHA INJECTION"
   xpos -396
-  ypos 969
+  ypos 650
  }
  Premult {
   channels all
   name Premult1
   xpos -396
-  ypos 1022
+  ypos 703
  }
  Dot {
   name Dot9
   xpos -362
-  ypos 1089
+  ypos 770
  }
-push $N44714c00
+push $N6af3e400
  Switch {
   inputs 2
   which {{parent.boolean_1}}
   name Switch1
   xpos -259
-  ypos 1086
+  ypos 767
  }
  Output {
   name Output1
   xpos -259
-  ypos 1389
+  ypos 861
  }
 end_group
